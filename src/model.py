@@ -91,7 +91,7 @@ class LayerController:
             self.last_budget_ok = True
 
         # global PID -----------------------------------------------------
-        gains_g = self.train_cfg.pid_gains.global
+        gains_g = getattr(self.train_cfg.pid_gains, 'global')
         if self.prev_loss is None:
             self.prev_loss = loss_val
         d_loss = (loss_val - self.prev_loss) / (abs(self.prev_loss) + 1e-12)
