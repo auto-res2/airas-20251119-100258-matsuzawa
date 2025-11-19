@@ -251,3 +251,17 @@ budget_compliance_rate        : 0.000000
 wallclock_seconds             : 24.852224
 === [TRIAL RUN] PASSED for comparative-1-iter1-Qwen3-0.6B-gsm8k at Wed Nov 19 12:50:14 PM UTC 2025 ===
 
+=== [UV SYNC] Start at Wed Nov 19 12:51:45 PM UTC 2025 ===
+=== [UV SYNC] Finished successfully at Wed Nov 19 12:51:51 PM UTC 2025 ===
+=== [TRIAL RUN] Start for proposed-iter1-Qwen3-0.6B-gsm8k at Wed Nov 19 12:51:51 PM UTC 2025 ===
+[MAIN] launching subprocess:
+  /home/toma/pt80-1-a-29/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/bin/python3 -u -m src.train run=proposed-iter1-Qwen3-0.6B-gsm8k results_dir=.research/iteration1 mode=trial
+[2025-11-19 12:52:24,380][transformers.configuration_utils][WARNING] - `torch_dtype` is deprecated! Use `dtype` instead!
+trainable params: 1,146,880 || all params: 597,196,800 || trainable%: 0.1920
+exact_match_test              : 0.000000
+total_backward_tflops         : 0.000000
+compute_normalised_accuracy   : 0.000000
+budget_compliance_rate        : 0.000000
+wallclock_seconds             : 27.565211
+=== [TRIAL RUN] PASSED for proposed-iter1-Qwen3-0.6B-gsm8k at Wed Nov 19 12:53:14 PM UTC 2025 ===
+
