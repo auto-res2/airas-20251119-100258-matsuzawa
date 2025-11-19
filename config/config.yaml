@@ -6,7 +6,6 @@ defaults:
 # ---------------------------------------------------------------------------
 mode: full              # full | trial (overridden by CLI)
 results_dir: ./results
-run: null               # run-id key, e.g., proposed-iter1-Qwen3-0.6B-gsm8k
 
 # ---------------------------------------------------------------------------
 # WandB (entity/project editable by user) ------------------------------------
