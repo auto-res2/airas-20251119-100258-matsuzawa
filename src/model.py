@@ -28,7 +28,7 @@ def build_model(cfg: DictConfig) -> Tuple[torch.nn.Module, AutoTokenizer]:
         model.gradient_checkpointing_enable()
 
     if "LoRA" in cfg.parameter_update_modes and getattr(cfg, "lora_rank", 0) > 0:
-        l_cfg = LoraConfig(r=cfg.lora_rank, lora_alpha=32, bias="none", dropout=0.05)
+        l_cfg = LoraConfig(r=cfg.lora_rank, lora_alpha=32, bias="none", lora_dropout=0.05)
         model = get_peft_model(model, l_cfg)
         model.print_trainable_parameters()
     return model, tok
