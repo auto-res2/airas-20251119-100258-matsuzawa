@@ -66,7 +66,7 @@ class GSM8KDataModule:
             train,
             batch_size=self.cfg.batch_size,
             shuffle=True,
-            drop_last=self.cfg.drop_last,
+            drop_last=getattr(self.cfg, 'drop_last', True),
             collate_fn=collate,
         )
         dl_hold = DataLoader(hold, batch_size=self.cfg.batch_size, shuffle=False, collate_fn=collate)
