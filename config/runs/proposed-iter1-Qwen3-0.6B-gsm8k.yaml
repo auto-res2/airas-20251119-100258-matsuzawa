@@ -1,7 +1,7 @@
 run_id: proposed-iter1-Qwen3-0.6B-gsm8k
 method: proposed
 model:
-  name: Qwen3-0.6B
+  name: Qwen/Qwen3-0.6B
   precision: fp16
   parameter_update_modes: [FULL, LoRA, FROZEN]
   lora_rank: 8
