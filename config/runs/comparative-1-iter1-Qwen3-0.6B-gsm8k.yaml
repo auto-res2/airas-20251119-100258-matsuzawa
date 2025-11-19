@@ -1,7 +1,7 @@
 run_id: comparative-1-iter1-Qwen3-0.6B-gsm8k
 method: comparative-1
 model:
-  name: Qwen3-0.6B
+  name: Qwen/Qwen3-0.6B
   precision: fp16
   parameter_update_modes: [FULL, FROZEN]  # HiCaP-DF (no LoRA)
   gradient_checkpointing: true

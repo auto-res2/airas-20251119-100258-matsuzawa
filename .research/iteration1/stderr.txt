@@ -127,4 +127,203 @@ See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ fo
   seqs = [torch.tensor(b[k], dtype=torch.long) for b in batch]
 `torch_dtype` is deprecated! Use `dtype` instead!
 train:   0%|          | 0/2 [00:00<?, ?it/s]train:  50%|█████     | 1/2 [00:01<00:01,  1.40s/it]train: 100%|██████████| 2/2 [00:01<00:00,  1.53it/s]train: 100%|██████████| 2/2 [00:01<00:00,  1.31it/s]
-eval:test:   0%|          | 0/20 [00:00<?, ?it/s]eval:test:   5%|▌         | 1/20 [00:01<00:22,  1.21s/it]eval:test:  10%|█         | 2/20 [00:02<00:19,  1.07s/it]eval:test:  15%|█▌        | 3/20 [00:03<00:17,  1.02s/it]eval:test:  20%|██        | 4/20 [00:04<00:16,  1.01s/it]eval:test:  25%|██▌       | 5/20 [00:05<00:15,  1.00s/it]eval:test:  30%|███       | 6/20 [00:06<00:13,  1.01it/s]eval:test:  35%|███▌      | 7/20 [00:07<00:12,  1.02it/s]eval:test:  40%|████      | 8/20 [00:08<00:11,  1.02it/s]eval:test:  45%|████▌     | 9/20 [00:09<00:10,  1.02it/s]eval:test:  50%|█████     | 10/20 [00:09<00:09,  1.02it/s]eval:test:  55%|█████▌    | 11/20 [00:10<00:08,  1.03it/s]eval:test:  60%|██████    | 12/20 [00:11<00:07,  1.03it/s]eval:test:  65%|██████▌   | 13/20 [00:12<00:06,  1.03it/s]eval:test:  70%|███████   | 14/20 [00:13<00:05,  1.04it/s]eval:test:  75%|███████▌  | 15/20 [00:14<00:04,  1.04it/s]eval:test:  80%|████████  | 16/20 [00:15<00:03,  1.04it/s]eval:test:  85%|████████▌ | 17/20 [00:16<00:02,  1.04it/s]eval:test:  90%|█████████ | 18/20 [00:17<00:01,  1.04it/s]eval:test:  95%|█████████▌| 19/20 [00:18<00:00,  1.04it/s]eval:test: 100%|██████████| 20/20 [00:19<00:00,  1.04it/s]                                                          
+eval:test:   0%|          | 0/20 [00:00<?, ?it/s]eval:test:   5%|▌         | 1/20 [00:01<00:22,  1.21s/it]eval:test:  10%|█         | 2/20 [00:02<00:19,  1.07s/it]eval:test:  15%|█▌        | 3/20 [00:03<00:17,  1.02s/it]eval:test:  20%|██        | 4/20 [00:04<00:16,  1.01s/it]eval:test:  25%|██▌       | 5/20 [00:05<00:15,  1.00s/it]eval:test:  30%|███       | 6/20 [00:06<00:13,  1.01it/s]eval:test:  35%|███▌      | 7/20 [00:07<00:12,  1.02it/s]eval:test:  40%|████      | 8/20 [00:08<00:11,  1.02it/s]eval:test:  45%|████▌     | 9/20 [00:09<00:10,  1.02it/s]eval:test:  50%|█████     | 10/20 [00:09<00:09,  1.02it/s]eval:test:  55%|█████▌    | 11/20 [00:10<00:08,  1.03it/s]eval:test:  60%|██████    | 12/20 [00:11<00:07,  1.03it/s]eval:test:  65%|██████▌   | 13/20 [00:12<00:06,  1.03it/s]eval:test:  70%|███████   | 14/20 [00:13<00:05,  1.04it/s]eval:test:  75%|███████▌  | 15/20 [00:14<00:04,  1.04it/s]eval:test:  80%|████████  | 16/20 [00:15<00:03,  1.04it/s]eval:test:  85%|████████▌ | 17/20 [00:16<00:02,  1.04it/s]eval:test:  90%|█████████ | 18/20 [00:17<00:01,  1.04it/s]eval:test:  95%|█████████▌| 19/20 [00:18<00:00,  1.04it/s]eval:test: 100%|██████████| 20/20 [00:19<00:00,  1.04it/s]                                                          Using CPython 3.11.13
+Creating virtual environment at: .venv
+Resolved 132 packages in 221ms
+Installed 101 packages in 5.23s
+ + accelerate==1.11.0
+ + aiohappyeyeballs==2.6.1
+ + aiohttp==3.13.2
+ + aiosignal==1.4.0
+ + alembic==1.17.2
+ + annotated-types==0.7.0
+ + antlr4-python3-runtime==4.9.3
+ + anyio==4.11.0
+ + attrs==25.4.0
+ + bitsandbytes==0.48.2
+ + certifi==2025.11.12
+ + charset-normalizer==3.4.4
+ + click==8.3.1
+ + colorlog==6.10.1
+ + contourpy==1.3.3
+ + cycler==0.12.1
+ + datasets==4.4.1
+ + dill==0.4.0
+ + ecohicalrt==0.2.0 (from file:///home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa)
+ + filelock==3.20.0
+ + fonttools==4.60.1
+ + frozenlist==1.8.0
+ + fsspec==2025.10.0
+ + gitdb==4.0.12
+ + gitpython==3.1.45
+ + greenlet==3.2.4
+ + h11==0.16.0
+ + hf-xet==1.2.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + huggingface-hub==0.36.0
+ + hydra-core==1.3.2
+ + idna==3.11
+ + jinja2==3.1.6
+ + joblib==1.5.2
+ + kiwisolver==1.4.9
+ + mako==1.3.10
+ + markupsafe==3.0.3
+ + matplotlib==3.10.7
+ + mpmath==1.3.0
+ + multidict==6.7.0
+ + multiprocess==0.70.18
+ + networkx==3.5
+ + numpy==2.3.5
+ + nvidia-cublas-cu12==12.8.4.1
+ + nvidia-cuda-cupti-cu12==12.8.90
+ + nvidia-cuda-nvrtc-cu12==12.8.93
+ + nvidia-cuda-runtime-cu12==12.8.90
+ + nvidia-cudnn-cu12==9.10.2.21
+ + nvidia-cufft-cu12==11.3.3.83
+ + nvidia-cufile-cu12==1.13.1.3
+ + nvidia-curand-cu12==10.3.9.90
+ + nvidia-cusolver-cu12==11.7.3.90
+ + nvidia-cusparse-cu12==12.5.8.93
+ + nvidia-cusparselt-cu12==0.7.1
+ + nvidia-nccl-cu12==2.27.5
+ + nvidia-nvjitlink-cu12==12.8.93
+ + nvidia-nvshmem-cu12==3.3.20
+ + nvidia-nvtx-cu12==12.8.90
+ + omegaconf==2.3.0
+ + optuna==4.6.0
+ + packaging==25.0
+ + pandas==2.3.3
+ + peft==0.18.0
+ + pillow==12.0.0
+ + platformdirs==4.5.0
+ + propcache==0.4.1
+ + protobuf==6.33.1
+ + psutil==7.1.3
+ + pyarrow==22.0.0
+ + pydantic==2.12.4
+ + pydantic-core==2.41.5
+ + pyparsing==3.2.5
+ + python-dateutil==2.9.0.post0
+ + pytz==2025.2
+ + pyyaml==6.0.3
+ + regex==2025.11.3
+ + requests==2.32.5
+ + safetensors==0.6.2
+ + scikit-learn==1.7.2
+ + scipy==1.16.3
+ + seaborn==0.13.2
+ + sentry-sdk==2.45.0
+ + six==1.17.0
+ + smmap==5.0.2
+ + sniffio==1.3.1
+ + sqlalchemy==2.0.44
+ + sympy==1.14.0
+ + threadpoolctl==3.6.0
+ + tokenizers==0.22.1
+ + torch==2.9.1
+ + tqdm==4.67.1
+ + transformers==4.57.1
+ + triton==3.5.1
+ + typing-extensions==4.15.0
+ + typing-inspection==0.4.2
+ + tzdata==2025.2
+ + urllib3==2.5.0
+ + wandb==0.23.0
+ + xxhash==3.6.0
+ + yarl==1.22.0
+/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/src/main.py:12: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../config", config_name="config")
+/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/src/train.py:386: UserWarning: 
+The version_base parameter is not specified.
+Please specify a compatability version level, or None.
+Will assume defaults for version 1.1
+  @hydra.main(config_path="../config", config_name="config")
+/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+Error executing job with overrides: ['run=comparative-1-iter1-Qwen3-0.6B-gsm8k', 'results_dir=.research/iteration1', 'mode=trial']
+Traceback (most recent call last):
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 402, in hf_raise_for_status
+    response.raise_for_status()
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/Qwen3-0.6B/resolve/main/tokenizer_config.json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/transformers/utils/hub.py", line 479, in cached_files
+    hf_hub_download(
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1007, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1114, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1655, in _raise_on_head_call_error
+    raise head_call_error
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1543, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1460, in get_hf_file_metadata
+    r = _request_wrapper(
+        ^^^^^^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 283, in _request_wrapper
+    response = _request_wrapper(
+               ^^^^^^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 307, in _request_wrapper
+    hf_raise_for_status(response)
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 452, in hf_raise_for_status
+    raise _format(RepositoryNotFoundError, message, response) from e
+huggingface_hub.errors.RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-691db0db-7db270e01c6c4c107e7a0be4;7c303de5-f633-45a4-88c4-e5863c5ad978)
+
+Repository Not Found for url: https://huggingface.co/Qwen3-0.6B/resolve/main/tokenizer_config.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated. For more details, see https://huggingface.co/docs/huggingface_hub/authentication
+Invalid username or password.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/src/train.py", line 409, in _main
+    trainer = Trainer(cfg, save_root / cfg.run.run_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/src/train.py", line 90, in __init__
+    self.tokenizer = AutoTokenizer.from_pretrained(self.run_cfg.model.name, cache_dir=CACHE)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/transformers/models/auto/tokenization_auto.py", line 1073, in from_pretrained
+    tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/transformers/models/auto/tokenization_auto.py", line 905, in get_tokenizer_config
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/transformers/utils/hub.py", line 322, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/lib/python3.11/site-packages/transformers/utils/hub.py", line 511, in cached_files
+    raise OSError(
+OSError: Qwen3-0.6B is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `hf auth login` or by passing `token=<your_token>`
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Error executing job with overrides: ['run=comparative-1-iter1-Qwen3-0.6B-gsm8k', 'results_dir=.research/iteration1', 'mode=trial']
+Traceback (most recent call last):
+  File "/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/src/main.py", line 24, in main
+    subprocess.run(cmd, check=True, env=os.environ.copy())
+  File "/home/toma/.local/share/uv/python/cpython-3.11.13-linux-x86_64-gnu/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/toma/t-80-8-b-03/_work/airas-20251119-100258-matsuzawa/airas-20251119-100258-matsuzawa/.venv/bin/python3', '-u', '-m', 'src.train', 'run=comparative-1-iter1-Qwen3-0.6B-gsm8k', 'results_dir=.research/iteration1', 'mode=trial']' returned non-zero exit status 1.
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
