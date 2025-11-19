@@ -246,7 +246,62 @@
     "iterations": [
       {
         "iteration_id": 1,
-        "method": "Energy-Constrained Hierarchical PID with Adaptive Low-Rank Thawing (EcoHiCaLRT)\n\nLevel-0  (global tri-signal PID – unchanged from HiCaP)\n  • Produces global factor g_t ∈[0.5,1.5] from loss, loss-derivative, gradient-norm.\n\nLevel-1  (layer PI – unchanged)\n  • Drives relative update r_ℓ,t toward auto-estimated critical target r* _ℓ using PI gains (Kp=0.35, Ki=0.05).\n\nLevel-2  (compute-budget gate – NEW)\n  State per layer ℓ: mode ∈{FULL, LoRA, FROZEN}.\n  Let 𝐹̂_t be an EMA (α_c=0.95) of *measured* backward FLOPs per step (obtained cheaply from CUPTI or counted parameters).\n  User specifies budget target 𝐹_target (e.g., 70% of baseline constant-LR run).\n  Compute-error  e_c = (𝐹̂_t − 𝐹_target)/𝐹_target,  integral i_c ← 0.9·i_c + e_c.\n  Budget factor  b_t = clamp(1 − 0.4·e_c − 0.05·i_c , 0.3 , 1.7).\n  This single scalar modulates *all* freeze thresholds on-the-fly:\n      if mode == FULL and \\bar r_ℓ  < 0.2·b_t·r* _ℓ  for 30 steps → switch to LoRA (rank r=8, trainable).\n      if mode == LoRA and \\bar r_ℓ  < 0.1·b_t·r* _ℓ  for 50 steps → FROZEN (stop all updates).\n      if mode in {FROZEN, LoRA} and \\bar r_ℓ  > 0.4·b_t·r* _ℓ  → revert to FULL.\n  • LoRA insertion/merging is O(1) (use bits-and-bops merge in PEFT).\n  • Gates need only two integers and one enum per layer.\n\nEffective per-layer LR when active:\n      lr_ℓ,t = lr_0 · g_t · f_ℓ,t                (FULL or LoRA)\n      lr_ℓ,t = 0                                 (FROZEN)\n\nProperties\n• Single extra control loop on FLOPs makes the whole run *self-budgeting*.\n• Layers degrade gracefully: FULL → cheap LoRA → zero compute, reversible at any time.\n• <120 additional LoC over HiCaP; no second forward/backward pass; no manual hyper-parameters except 𝐹_target.\n• Works with any PyTorch optimiser; needs only per-step loss and gradient norms already available during training."
+        "method": "Energy-Constrained Hierarchical PID with Adaptive Low-Rank Thawing (EcoHiCaLRT)\n\nLevel-0  (global tri-signal PID – unchanged from HiCaP)\n  • Produces global factor g_t ∈[0.5,1.5] from loss, loss-derivative, gradient-norm.\n\nLevel-1  (layer PI – unchanged)\n  • Drives relative update r_ℓ,t toward auto-estimated critical target r* _ℓ using PI gains (Kp=0.35, Ki=0.05).\n\nLevel-2  (compute-budget gate – NEW)\n  State per layer ℓ: mode ∈{FULL, LoRA, FROZEN}.\n  Let 𝐹̂_t be an EMA (α_c=0.95) of *measured* backward FLOPs per step (obtained cheaply from CUPTI or counted parameters).\n  User specifies budget target 𝐹_target (e.g., 70% of baseline constant-LR run).\n  Compute-error  e_c = (𝐹̂_t − 𝐹_target)/𝐹_target,  integral i_c ← 0.9·i_c + e_c.\n  Budget factor  b_t = clamp(1 − 0.4·e_c − 0.05·i_c , 0.3 , 1.7).\n  This single scalar modulates *all* freeze thresholds on-the-fly:\n      if mode == FULL and \\bar r_ℓ  < 0.2·b_t·r* _ℓ  for 30 steps → switch to LoRA (rank r=8, trainable).\n      if mode == LoRA and \\bar r_ℓ  < 0.1·b_t·r* _ℓ  for 50 steps → FROZEN (stop all updates).\n      if mode in {FROZEN, LoRA} and \\bar r_ℓ  > 0.4·b_t·r* _ℓ  → revert to FULL.\n  • LoRA insertion/merging is O(1) (use bits-and-bops merge in PEFT).\n  • Gates need only two integers and one enum per layer.\n\nEffective per-layer LR when active:\n      lr_ℓ,t = lr_0 · g_t · f_ℓ,t                (FULL or LoRA)\n      lr_ℓ,t = 0                                 (FROZEN)\n\nProperties\n• Single extra control loop on FLOPs makes the whole run *self-budgeting*.\n• Layers degrade gracefully: FULL → cheap LoRA → zero compute, reversible at any time.\n• <120 additional LoC over HiCaP; no second forward/backward pass; no manual hyper-parameters except 𝐹_target.\n• Works with any PyTorch optimiser; needs only per-step loss and gradient norms already available during training.",
+        "experimental_design": {
+          "experiment_summary": "Task: Single-epoch domain-adaptation of a 0.6-billion-parameter language model (Qwen3-0.6B) on GSM8K so that it learns to solve grade-school math word problems. The run must never exceed a pre-declared compute envelope. \nWorkflow: (1) Pre-measure the backward FLOPs of a constant-LR baseline to set F_target. (2) Fine-tune the model for one epoch (≈1 180 optimiser steps) using the proposed Energy-Constrained Hierarchical PID with Adaptive Low-Rank Thawing (EcoHiCaLRT). The optimiser exposes three nested control loops: a global PID for stable convergence, per-layer PI to keep relative parameter updates near critical values, and a new compute-budget gate that dynamically pushes each layer through FULL → LoRA → FROZEN and back while monitoring an EMA of measured FLOPs. (3) Log per-step FLOPs, energy draw, layer modes, running loss, and interim EM accuracy. (4) After training, evaluate the fine-tuned checkpoint on the GSM8K test set and compute all primary and secondary metrics. Purpose: demonstrate that EcoHiCaLRT matches the best unconstrained adaptive schedule in accuracy while cutting total backward compute by ≥30 % and maintaining >99 % compliance with the user-set budget.",
+          "evaluation_metrics": [
+            {
+              "name": "Exact-match accuracy on GSM8K test",
+              "description": "Correctness criteria: Strip whitespace, punctuation, and '$' signs from both predicted and gold answers. A prediction is correct if the resulting strings are identical or, for numeric answers, if they parse to the same rational value. Calculation: EM = (number of correct answers) / (total test problems). Task appropriateness: GSM8K questions have a single scalar or short textual answer, so exact match reflects true mathematical correctness. Visualisations: bar plot of EM per method, learning curve of running EM on the 200-sample hold-out during training."
+            },
+            {
+              "name": "Compute-normalised accuracy",
+              "description": "Formula: (Exact-match accuracy on GSM8K test) ÷ (total backward TFLOPs consumed during fine-tuning). Total TFLOPs is obtained by summing measured FLOPs per step and dividing by 10^12. Correctness criteria: higher is better. Task appropriateness: rewards methods that gain more accuracy per unit of compute, directly reflecting the study’s energy-efficiency objective. Visualisations: scatter plot of EM vs. TFLOPs with iso-score contours."
+            },
+            {
+              "name": "budget compliance rate",
+              "description": "Each step is marked compliant if the measured backward FLOPs 𝐹̂_t is ≤ the user-declared target 𝐹_target. Rate = (compliant steps) / (total steps). Correctness: closer to 1 indicates stronger adherence. Task appropriateness: quantifies the primary constraint the new controller must satisfy. Visualisations: histogram of 𝐹̂_t / 𝐹_target across all steps, plus horizontal line at 1.0."
+            },
+            {
+              "name": "(A) Exact-match accuracy on GSM8K test.\n(B) Compute-normalised accuracy = EM / (total backward TFLOPs).\nSecondary: budget compliance rate = % steps with 𝐹̂_t ≤ 𝐹_target.",
+              "description": "Primary metric as specified in hypothesis: (A) Exact-match accuracy on GSM8K test.\n(B) Compute-normalised accuracy = EM / (total backward TFLOPs).\nSecondary: budget compliance rate = % steps with 𝐹̂_t ≤ 𝐹_target."
+            }
+          ],
+          "proposed_method": "Energy-Constrained Hierarchical PID with Adaptive Low-Rank Thawing (EcoHiCaLRT).\n1. Objectives: maximise task accuracy in a single pass while guaranteeing overall compute stays under a user-set FLOP cap. \n2. Theory: treats training as a control system. Level-0 global tri-signal PID stabilises convergence; Level-1 per-layer PI keeps each layer’s relative update r̄_ℓ,t near its automatically estimated critical target r*ℓ; Level-2 introduces a compute-budget gate that modulates Layer freezing/unfreezing decisions via a single scalar budget factor b_t derived from the error between an EMA of observed FLOPs and the target budget.\n3. Algorithmic procedure per step: (a) forward & backward pass; (b) measure FLOPs_step using CUPTI counters; (c) update global PID factor g_t and layer PI factors f_ℓ,t; (d) compute budget factor b_t and deterministically switch each layer between FULL, LoRA(rank=8), or FROZEN modes based on thresholds scaled by b_t; (e) apply effective lr_ℓ,t = lr_0 · g_t · f_ℓ,t when the layer is not frozen; (f) perform optimiser update and, if required, insert or merge LoRA weights on-the-fly.\n4. Complexity: adds <120 LoC to HiCaP and O(1) overhead, since no second pass or large buffers are created.\n5. Hardware requirements: compatible with standard PyTorch + PEFT on a single A100-80 GB.\n6. Single hyper-parameter exposed to the user: F_target (e.g., 0.7 of baseline compute).",
+          "comparative_methods": [
+            "HiCaP-DF (layer PI + reversible freeze)"
+          ],
+          "models_to_use": [
+            "Qwen3-0.6B"
+          ],
+          "datasets_to_use": [
+            "gsm8k"
+          ],
+          "hyperparameters_to_search": [
+            {
+              "name": "lr_0",
+              "range": "1e-5-5e-4"
+            },
+            {
+              "name": "F_target",
+              "range": "0.6-0.8"
+            }
+          ]
+        },
+        "experiment_runs": [
+          {
+            "run_id": "proposed-iter1-Qwen3-0.6B-gsm8k",
+            "method_name": "proposed",
+            "model_name": "Qwen3-0.6B",
+            "dataset_name": "gsm8k"
+          },
+          {
+            "run_id": "comparative-1-iter1-Qwen3-0.6B-gsm8k",
+            "method_name": "comparative-1",
+            "model_name": "Qwen3-0.6B",
+            "dataset_name": "gsm8k"
+          }
+        ]
       }
     ]
   }
