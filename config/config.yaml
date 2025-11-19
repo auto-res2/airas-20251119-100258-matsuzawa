@@ -1,0 +1,41 @@
+defaults:
+  - _self_
+
+# ---------------------------------------------------------------------------
+# CLI-patched knobs ----------------------------------------------------------
+# ---------------------------------------------------------------------------
+mode: full              # full | trial (overridden by CLI)
+results_dir: ./results
+run: null               # run-id key, e.g., proposed-iter1-Qwen3-0.6B-gsm8k
+
+# ---------------------------------------------------------------------------
+# WandB (entity/project editable by user) ------------------------------------
+# ---------------------------------------------------------------------------
+wandb:
+  entity: gengaru617-personal
+  project: 2025-11-19
+  mode: online         # auto-patched to "disabled" in trial mode
+
+# ---------------------------------------------------------------------------
+# Top-level optuna stub ------------------------------------------------------
+# (real search space lives under run.*)                                       
+# ---------------------------------------------------------------------------
+optuna:
+  n_trials: 1
+  direction: maximize
+
+# ---------------------------------------------------------------------------
+# placeholder run-section so that fields exist pre-merge ---------------------
+# ---------------------------------------------------------------------------
+run:
+  run_id: placeholder
+  method: null
+  model: {}
+  dataset: {}
+  training: {}
+  logging: {}
+  checkpointing: {}
+  optuna:
+    n_trials: 1
+    direction: maximize
+    search_space: {}

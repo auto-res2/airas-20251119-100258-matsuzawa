@@ -1,0 +1,51 @@
+run_id: proposed-iter1-Qwen3-0.6B-gsm8k
+method: proposed
+model:
+  name: Qwen3-0.6B
+  precision: fp16
+  parameter_update_modes: [FULL, LoRA, FROZEN]
+  lora_rank: 8
+  gradient_checkpointing: true
+dataset:
+  name: gsm8k
+  split: train
+  max_length: 1024
+  batch_size: 8              # per-GPU micro-batch
+  grad_accumulation_steps: 8 # effective batch = 64
+  num_epochs: 1
+  drop_last: false
+training:
+  base_learning_rate: 2.0e-4 # lr_0 (EcoHiCaLRT will scale this)
+  optimizer: adamw
+  betas: [0.9, 0.95]
+  eps: 1.0e-8
+  weight_decay: 0.01
+  scheduler: none            # learning-rate handled by PID loops
+  max_steps: 1180            # ≈ one full epoch on GSM8K train
+  compute_budget_target_ratio: 0.7   # F_target / baseline FLOPs
+  pid_gains:
+    global: {Kp: 1.2, Ki: 0.1, Kd: 0.0}
+    layer:  {Kp: 0.35, Ki: 0.05}
+  compute_gate:
+    ema_alpha: 0.95
+    clamp_min: 0.3
+    clamp_max: 1.7
+    thresholds:
+      full_to_lora: 0.2       # × r*_ℓ
+      lora_to_frozen: 0.1
+      recover_to_full: 0.4
+      patience_full_to_lora: 30
+      patience_lora_to_frozen: 50
+logging:
+  interval_steps: 20
+  log_metrics: [loss, exact_match_holdout, backward_flops, cumulative_energy, per_layer_mode]
+checkpointing:
+  save_every_steps: 200
+  output_dir: checkpoints/ecohicalrt
+environment:
+  device: cuda
+  gpu_type: a100-80gb
+optuna:
+  n_trials: 1                # fixed hyper-params, no sweep
+  direction: maximize        # maximise compute-normalised EM
+  search_space: {}
