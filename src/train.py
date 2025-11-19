@@ -57,7 +57,6 @@ def approx_backward_flops(model: torch.nn.Module) -> int:
 # profiler-based FLOP calibration (one real step) ----------------------------
 # ---------------------------------------------------------------------------
 
-@torch.no_grad()
 def _measure_real_backward_flops(model: torch.nn.Module, batch: Dict[str, torch.Tensor]) -> int:
     for p in model.parameters():  # clear grads so profiler counts backward ops
         p.grad = None
