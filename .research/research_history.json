@@ -1,0 +1,10 @@
+{
+  "research_topic": "Learning rate optimization for fine-tuning Qwen3-0.6B on GSM8K elementary math problems",
+  "queries": [
+    "learning rate optimization",
+    "adaptive LR scheduling",
+    "Qwen3 0.6B fine-tuning",
+    "GSM8K elementary math",
+    "low-resource LLM fine-tuning"
+  ]
+}
