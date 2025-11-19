@@ -38,6 +38,7 @@ training:
       patience_lora_to_frozen: 50
 logging:
   interval_steps: 20
+  holdout_interval_steps: 50
   log_metrics: [loss, exact_match_holdout, backward_flops, cumulative_energy, per_layer_mode]
 checkpointing:
   save_every_steps: 200
