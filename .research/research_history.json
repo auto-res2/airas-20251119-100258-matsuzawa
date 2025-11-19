@@ -9,67 +9,124 @@
   ],
   "research_study_list": [
     {
-      "title": "AutoLRS: Automatic Learning-Rate Schedule by Bayesian Optimization on the Fly"
+      "title": "AutoLRS: Automatic Learning-Rate Schedule by Bayesian Optimization on the Fly",
+      "meta_data": {
+        "arxiv_id": "2105.10762"
+      }
     },
     {
       "title": "Reverse engineering learned optimizers reveals known and novel mechanisms"
     },
     {
-      "title": "Mechanic: A Learning Rate Tuner"
+      "title": "Mechanic: A Learning Rate Tuner",
+      "meta_data": {
+        "arxiv_id": "2306.00144"
+      }
     },
     {
-      "title": "MoMo: Momentum Models for Adaptive Learning Rates"
+      "title": "MoMo: Momentum Models for Adaptive Learning Rates",
+      "meta_data": {
+        "arxiv_id": "2305.07583"
+      }
     },
     {
-      "title": "Where Do Large Learning Rates Lead Us?"
+      "title": "Where Do Large Learning Rates Lead Us?",
+      "meta_data": {
+        "arxiv_id": "2410.22113"
+      }
     },
     {
-      "title": "Learning Rate Schedules in the Presence of Distribution Shift"
+      "title": "Learning Rate Schedules in the Presence of Distribution Shift",
+      "meta_data": {
+        "arxiv_id": "2303.15634"
+      }
     },
     {
-      "title": "Scaling Laws and Compute-Optimal Training Beyond Fixed Training Durations"
+      "title": "Scaling Laws and Compute-Optimal Training Beyond Fixed Training Durations",
+      "meta_data": {
+        "arxiv_id": "2405.18392"
+      }
     },
     {
       "title": "The Road Less Scheduled"
     },
     {
-      "title": "QLoRA: Efficient Finetuning of Quantized LLMs"
+      "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
+      "meta_data": {
+        "arxiv_id": "2305.14314"
+      }
     },
     {
-      "title": "QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models"
+      "title": "QA-LoRA: Quantization-Aware Low-Rank Adaptation of Large Language Models",
+      "meta_data": {
+        "arxiv_id": "2309.14717"
+      }
     },
     {
-      "title": "Evaluating Quantized Large Language Models"
+      "title": "Evaluating Quantized Large Language Models",
+      "meta_data": {
+        "arxiv_id": "2402.18158"
+      }
     },
     {
-      "title": "GLM-130B: An Open Bilingual Pre-trained Model"
+      "title": "GLM-130B: An Open Bilingual Pre-trained Model",
+      "meta_data": {
+        "arxiv_id": "2210.02414"
+      }
     },
     {
-      "title": "A Careful Examination of Large Language Model Performance on Grade School Arithmetic"
+      "title": "A Careful Examination of Large Language Model Performance on Grade School Arithmetic",
+      "meta_data": {
+        "arxiv_id": "2405.00332"
+      }
     },
     {
-      "title": "Language models are multilingual chain-of-thought reasoners"
+      "title": "Language models are multilingual chain-of-thought reasoners",
+      "meta_data": {
+        "arxiv_id": "2210.03057"
+      }
     },
     {
-      "title": "OpenMathInstruct-1: A 1.8 Million Math Instruction Tuning Dataset"
+      "title": "OpenMathInstruct-1: A 1.8 Million Math Instruction Tuning Dataset",
+      "meta_data": {
+        "arxiv_id": "2402.10176"
+      }
     },
     {
-      "title": "Evaluating Large Vision-and-Language Models on Children's Mathematical Olympiads"
+      "title": "Evaluating Large Vision-and-Language Models on Children's Mathematical Olympiads",
+      "meta_data": {
+        "arxiv_id": "2406.15736"
+      }
     },
     {
-      "title": "When Scaling Meets LLM Finetuning: The Effect of Data, Model and Finetuning Method"
+      "title": "When Scaling Meets LLM Finetuning: The Effect of Data, Model and Finetuning Method",
+      "meta_data": {
+        "arxiv_id": "2402.17193"
+      }
     },
     {
-      "title": "Breaking Physical and Linguistic Borders: Multilingual Federated Prompt Tuning for Low-Resource Languages"
+      "title": "Breaking Physical and Linguistic Borders: Multilingual Federated Prompt Tuning for Low-Resource Languages",
+      "meta_data": {
+        "arxiv_id": "2507.03003"
+      }
     },
     {
-      "title": "Selecting Large Language Model to Fine-tune via Rectified Scaling Law"
+      "title": "Selecting Large Language Model to Fine-tune via Rectified Scaling Law",
+      "meta_data": {
+        "arxiv_id": "2402.02314"
+      }
     },
     {
-      "title": "Low-Resource Vision Challenges for Foundation Models"
+      "title": "Low-Resource Vision Challenges for Foundation Models",
+      "meta_data": {
+        "arxiv_id": "2401.04716"
+      }
     },
     {
-      "title": "SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models"
+      "title": "SPP: Sparsity-Preserved Parameter-Efficient Fine-Tuning for Large Language Models",
+      "meta_data": {
+        "arxiv_id": "2405.16057"
+      }
     }
   ]
 }
